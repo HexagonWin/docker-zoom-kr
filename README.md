@@ -1,6 +1,6 @@
 This project is fully inspired of [sameersbn](https://github.com/sameersbn) [Skype](https://github.com/sameersbn/docker-skype)'s containerization.
 
-# hexagonwin/zoom-us-KR
+# hexagonwin/zoom-kr-KR
 
 # Introduction
 GNU/리눅스 환경에서 Zoom을 Docker 내에서 실행하기 위한 Dockerfile입니다.
@@ -18,13 +18,13 @@ GNU/리눅스 환경에서 Zoom을 Docker 내에서 실행하기 위한 Dockerfi
 
 ## Installation
 
-~~Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/mdouchement/zoom-us) and is the recommended method of installation.~~
+~~Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/mdouchement/zoom-kr) and is the recommended method of installation.~~
 * 해당 다운스트림 포크는 자동 빌드 이미지가 존재하지 않습니다. *
 
 직접 빌드를 하는 명령어는 다음과 같습니다.
 
 ```bash
-docker build -t hexagonwin/zoom-us github.com/hexagonwin/docker-zoom-us
+docker build -t hexagonwin/zoom-kr github.com/hexagonwin/docker-zoom-kr
 ```
 
 로컬 이미지가 생성된 이후, 다음 명령어를 수퍼유저로 실행하여 래퍼 스크립트를 설치해주세요.
@@ -32,14 +32,14 @@ docker build -t hexagonwin/zoom-us github.com/hexagonwin/docker-zoom-us
 ```bash
 docker run -it --rm \
   --volume /usr/local/bin:/target \
-  mdouchement/zoom-us:latest install
+  mdouchement/zoom-kr:latest install
 ```
 
 이 명령어는  `zoom` 으로 실행 가능한 래퍼 스크립트를 생성, 설치합니다.
 
 > **Note**
 >
-> If Zoom is installed on the the host then the host binary is launched instead of starting a Docker container. To force the launch of Zoom in a container use the `zoom-us-wrapper` script. For example, `zoom-us-wrapper zoom` will launch Zoom inside a Docker container regardless of whether it is installed on the host or not.
+> If Zoom is installed on the the host then the host binary is launched instead of starting a Docker container. To force the launch of Zoom in a container use the `zoom-kr-wrapper` script. For example, `zoom-kr-wrapper zoom` will launch Zoom inside a Docker container regardless of whether it is installed on the host or not.
 
 ## Web Browser / SSO
 
@@ -81,7 +81,7 @@ To upgrade to newer releases:
   1. Download the updated Docker image:
 
   ```bash
-  docker pull mdouchement/zoom-us:latest
+  docker pull mdouchement/zoom-kr:latest
   ```
 
   2. Run `install` to make sure the host scripts are updated.
@@ -89,7 +89,7 @@ To upgrade to newer releases:
   ```bash
   docker run -it --rm \
     --volume /usr/local/bin:/target \
-    mdouchement/zoom-us:latest install
+    mdouchement/zoom-kr:latest install
   ```
 
 ## Uninstallation
@@ -97,7 +97,7 @@ To upgrade to newer releases:
 ```bash
 docker run -it --rm \
   --volume /usr/local/bin:/target \
-  mdouchement/zoom-us:latest uninstall
+  mdouchement/zoom-kr:latest uninstall
 ```
 
 ## Shell Access
@@ -114,9 +114,9 @@ docker exec -it zoomus bash
   - `docker logs zoomus`
   - `ls -l ${ZOOM_HOME:=$HOME}/.zoom/logs` where you can find application logs.
 - Screen sharing:
-  - Try `xhost +SI:localuser:"$USER"` [#20](https://github.com/mdouchement/docker-zoom-us/issues/20)
+  - Try `xhost +SI:localuser:"$USER"` [#20](https://github.com/mdouchement/docker-zoom-kr/issues/20)
 - Transparent login form:
   - A possible workaround is to right click on the Zoom icon from the taskbar and select "About". The about popup could fix the login form render.
-  - If `Unrecognized OpenGL version` error is in the logs, it could be an issue with Nvidia drivers [#1](https://github.com/mdouchement/docker-zoom-us/issues/1)
-    - @mzcu made a fix [mzcu@ee177a5](https://github.com/mzcu/docker-zoom-us/commit/ee177a5e8915a05a51080301996a8ed4b89552ee) that should work
-    - I recommend you to try his version: https://github.com/mzcu/docker-zoom-us
+  - If `Unrecognized OpenGL version` error is in the logs, it could be an issue with Nvidia drivers [#1](https://github.com/mdouchement/docker-zoom-kr/issues/1)
+    - @mzcu made a fix [mzcu@ee177a5](https://github.com/mzcu/docker-zoom-kr/commit/ee177a5e8915a05a51080301996a8ed4b89552ee) that should work
+    - I recommend you to try his version: https://github.com/mzcu/docker-zoom-kr

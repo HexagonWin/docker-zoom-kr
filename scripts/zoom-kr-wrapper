@@ -23,19 +23,19 @@ fi;
 
 list_commands() {
   echo ""
-  echo "Launch zoom-us using:"
+  echo "Launch zoom-KR using:"
   echo "  zoom                        OR "
-  echo "  zoom-us-wrapper zoom"
+  echo "  zoom-KR-wrapper zoom"
   echo ""
   exit 1
 }
 
 cleanup_stopped_zoom_us_instances(){
-  echo "Cleaning up stopped zoom-us instances..."
+  echo "Cleaning up stopped zoom-kr instances..."
   for c in $(${SUDO} docker ps -a -q)
   do
     image="$(${SUDO} docker inspect -f {{.Config.Image}} ${c})"
-    if [ "${image}" == "hexagonwin/zoom-us:latest" ]; then
+    if [ "${image}" == "hexagonwin/zoom-kr:latest" ]; then
       running=$(${SUDO} docker inspect -f {{.State.Running}} ${c})
       if [ "${running}" != "true" ]; then
         ${SUDO} docker rm "${c}" >/dev/null
@@ -94,7 +94,7 @@ prepare_docker_device_parameters() {
 prog=$(basename $0)
 exec=$(which $prog)
 
-if [[ ${prog} == "zoom-us-wrapper" ]]; then
+if [[ ${prog} == "zoom-kr-wrapper" ]]; then
   case ${1} in
     zoom)
       prog=${1}
@@ -123,4 +123,4 @@ ${SUDO} docker run -d \
   ${VOLUMES} \
   ${ZOOM_EXTRA_DOCKER_ARGUMENTS} \
   --name zoomus \
-  hexagonwin/zoom-us:latest ${prog} $@ >/dev/null
+  hexagonwin/zoom-kr:latest ${prog} $@ >/dev/null

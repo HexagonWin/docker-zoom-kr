@@ -7,16 +7,16 @@ USER_GID=${USER_GID:-1000}
 ZOOM_US_USER=zoom
 
 install_zoom_us() {
-  echo "Installing zoom-us-wrapper..."
-  install -m 0755 /var/cache/zoom-us/zoom-us-wrapper /target/
-  echo "Installing zoom-us..."
-  ln -sf zoom-us-wrapper /target/zoom
+  echo "Installing zoom-kr-wrapper..."
+  install -m 0755 /var/cache/zoom-kr/zoom-kr-wrapper /target/
+  echo "Installing zoom-kr..."
+  ln -sf zoom-kr-wrapper /target/zoom
 }
 
 uninstall_zoom_us() {
-  echo "Uninstalling zoom-us-wrapper..."
-  rm -rf /target/zoom-us-wrapper
-  echo "Uninstalling zoom-us..."
+  echo "Uninstalling zoom-kr-wrapper..."
+  rm -rf /target/zoom-kr-wrapper
+  echo "Uninstalling zoom-kr..."
   rm -rf /target/zoom
 }
 

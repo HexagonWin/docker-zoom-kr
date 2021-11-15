@@ -1,5 +1,5 @@
 # References:
-#   https://hub.docker.com/r/solarce/zoom-us
+#   https://hub.docker.com/r/solarce/zoom-kr
 #   https://github.com/sameersbn/docker-skype
 FROM debian:bullseye-slim
 MAINTAINER hexagonwin
@@ -20,6 +20,8 @@ RUN apt-get update && \
 		libxcb-keysyms1 libxcb-xtest0 ibus ibus-gtk \
 		libxcb-xinerama0 libxkbcommon-x11-0 \
 		libnss3 libxss1 xcompmgr pulseaudio && \
+		fonts-nanum* wget unzip \
+
 	 apt-get clean -y && \
 	 apt-get autoremove -y && \
 	 rm -rf /var/lib/apt/lists/*
@@ -35,7 +37,7 @@ RUN curl -sSL $ZOOM_URL -o /tmp/zoom_setup.deb && \
 		rm -rf /var/lib/apt/lists/* && \
 	rm /tmp/zoom_setup.deb
 
-COPY scripts/ /var/cache/zoom-us/
+COPY scripts/ /var/cache/zoom-kr/
 COPY entrypoint.sh /sbin/entrypoint.sh
 RUN chmod 755 /sbin/entrypoint.sh
 
