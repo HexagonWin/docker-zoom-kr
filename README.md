@@ -1,37 +1,33 @@
 This project is fully inspired of [sameersbn](https://github.com/sameersbn) [Skype](https://github.com/sameersbn/docker-skype)'s containerization.
 
-# mdouchement/zoom-us
+# hexagonwin/zoom-us-KR
 
 # Introduction
+GNU/리눅스 환경에서 Zoom을 Docker 내에서 실행하기 위한 Dockerfile입니다.
 
-`Dockerfile` to create a [Docker](https://www.docker.com/) container image with [Zoom](http://www.zoom.us) for Linux with support for audio/video calls.
-
-The image uses [X11](http://www.x.org) and [Pulseaudio](http://www.freedesktop.org/wiki/Software/PulseAudio/) unix domain sockets on the host to enable audio/video support in Zoom. These components are available out of the box on pretty much any modern linux distribution.
+이 이미지는 Zoom에서 오디오 기능을 활성화 하기 위하여 [X11](http://www.x.org) 및 [Pulseaudio](http://www.freedesktop.org/wiki/Software/PulseAudio/) unix domain socket을 사용합니다.
 
 ## Contributing
 
-If you find this image useful here's how you can help:
-
-- Send a pull request with your awesome features and bug fixes
-- Help users resolve their [issues](https://github.com/mdouchement/docker-zoom-us/issues?q=is%3Aopen+is%3Aissue).
+만약 이 이미지가 도움이 되었다면, 도와주세요.
+- 업스트림 기능의 패치라면 mdouchement 님의 업스트림 레포지토리에 기여해주세요.
+- 제가 메인테이닝 하는 해당 다운스트림 레포지토리의 패치 위에 변경사항은 다운스트림 레포지토리에 기여해주세요.
+- 다운스트림 및 업스트림 레포지토리의 Issues 탭에서 문제를 가지고 있는 다른 사람들을 도와주세요.
 
 # Getting started
 
 ## Installation
 
-Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/mdouchement/zoom-us) and is the recommended method of installation.
+~~Automated builds of the image are available on [Dockerhub](https://hub.docker.com/r/mdouchement/zoom-us) and is the recommended method of installation.~~
+* 해당 다운스트림 포크는 자동 빌드 이미지가 존재하지 않습니다. *
+
+직접 빌드를 하는 명령어는 다음과 같습니다.
 
 ```bash
-docker pull mdouchement/zoom-us:latest
+docker build -t hexagonwin/zoom-us github.com/hexagonwin/docker-zoom-us
 ```
 
-Alternatively you can build the image yourself.
-
-```bash
-docker build -t mdouchement/zoom-us github.com/mdouchement/docker-zoom-us
-```
-
-With the image locally available, install the wrapper scripts by running the following as root:
+로컬 이미지가 생성된 이후, 다음 명령어를 수퍼유저로 실행하여 래퍼 스크립트를 설치해주세요.
 
 ```bash
 docker run -it --rm \
@@ -39,7 +35,7 @@ docker run -it --rm \
   mdouchement/zoom-us:latest install
 ```
 
-This will install a wrapper script to launch `zoom`.
+이 명령어는  `zoom` 으로 실행 가능한 래퍼 스크립트를 생성, 설치합니다.
 
 > **Note**
 >
