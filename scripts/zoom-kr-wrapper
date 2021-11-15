@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PATH=/usr/sbin:/usr/bin:/sbin:/bin
-ZOOM_US_USER=zoom
+ZOOM_KR_USER=zoom
 
 # do we need to use sudo to start docker containers?
 ( id -Gn | grep -q docker ) || SUDO=sudo
@@ -30,7 +30,7 @@ list_commands() {
   exit 1
 }
 
-cleanup_stopped_zoom_us_instances(){
+cleanup_stopped_zoom_kr_instances(){
   echo "Cleaning up stopped zoom-kr instances..."
   for c in $(${SUDO} docker ps -a -q)
   do
@@ -68,13 +68,13 @@ prepare_docker_volume_parameters() {
 
   echo "Using ZOOM_HOME: ${ZOOM_HOME}"
 
-  touch ${ZOOM_HOME}/.config/zoomus.conf # create if not exists
+  touch ${ZOOM_HOME}/.config/zoomkr.conf # create if not exists
 
-  VOLUMES+=" --volume=${ZOOM_HOME}/.config/zoomus.conf:/home/${ZOOM_US_USER}/.config/zoomus.conf"
-  VOLUMES+=" --volume=${ZOOM_HOME}/.cache/zoom:/home/${ZOOM_US_USER}/.cache/zoom"
-  VOLUMES+=" --volume=${ZOOM_HOME}/.zoom:/home/${ZOOM_US_USER}/.zoom"
-  VOLUMES+=" --volume=${DOWNLOAD_DIR}:/home/${ZOOM_US_USER}/Downloads"
-  VOLUMES+=" --volume=${DOCUMENTS_DIR}:/home/${ZOOM_US_USER}/Documents"
+  VOLUMES+=" --volume=${ZOOM_HOME}/.config/zoomus.conf:/home/${ZOOM_KR_USER}/.config/zoomus.conf"
+  VOLUMES+=" --volume=${ZOOM_HOME}/.cache/zoom:/home/${ZOOM_KR_USER}/.cache/zoom"
+  VOLUMES+=" --volume=${ZOOM_HOME}/.zoom:/home/${ZOOM_KR_USER}/.zoom"
+  VOLUMES+=" --volume=${DOWNLOAD_DIR}:/home/${ZOOM_KR_USER}/Downloads"
+  VOLUMES+=" --volume=${DOCUMENTS_DIR}:/home/${ZOOM_KR_USER}/Documents"
   VOLUMES+=" --volume=${XSOCK}:${XSOCK}"
   VOLUMES+=" --volume=${XAUTH}:${XAUTH}"
   VOLUMES+=" --volume=/run/user/${USER_UID}/pulse:/run/pulse"
@@ -122,5 +122,5 @@ ${SUDO} docker run -d \
   --device /dev/dri \
   ${VOLUMES} \
   ${ZOOM_EXTRA_DOCKER_ARGUMENTS} \
-  --name zoomus \
+  --name zoomkr \
   hexagonwin/zoom-kr:latest ${prog} $@ >/dev/null

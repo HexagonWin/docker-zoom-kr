@@ -29,7 +29,7 @@ create_user() {
   # create user with USER_UID
   if ! getent passwd ${ZOOM_US_USER} >/dev/null; then
     adduser --disabled-login --uid ${USER_UID} --gid ${USER_GID} \
-      --gecos 'ZoomUs' ${ZOOM_US_USER} >/dev/null 2>&1
+      --gecos 'ZoomKr' ${ZOOM_US_USER} >/dev/null 2>&1
   fi
   chown ${ZOOM_US_USER}:${ZOOM_US_USER} -R /home/${ZOOM_US_USER}
   adduser ${ZOOM_US_USER} sudo
@@ -42,7 +42,7 @@ grant_access_to_video_devices() {
       VIDEO_GID=$(stat -c %g $device)
       VIDEO_GROUP=$(stat -c %G $device)
       if [[ ${VIDEO_GROUP} == "UNKNOWN" ]]; then
-        VIDEO_GROUP=zoomusvideo
+        VIDEO_GROUP=zoomkrvideo
         groupadd -g ${VIDEO_GID} ${VIDEO_GROUP}
       fi
       usermod -a -G ${VIDEO_GROUP} ${ZOOM_US_USER}
