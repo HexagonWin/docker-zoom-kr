@@ -110,11 +110,13 @@ elif [[ -n ${exec} ]]; then
   exec ${exec} $@
 fi
 
-cleanup_stopped_zoom_us_instances
+figlet "K-ZOOM"
+echo " [ Korean Zoom for Docker ] "
+echo -e " [ PRODUCT REGISTERED TO USER : "$USER"] "
+cleanup_stopped_zoom_kr_instances
 prepare_docker_env_parameters
 prepare_docker_volume_parameters
 prepare_docker_device_parameters
-
 echo "Starting ${prog}..."
 ${SUDO} docker run -d \
   ${ENV_VARS} \
@@ -124,3 +126,11 @@ ${SUDO} docker run -d \
   ${ZOOM_EXTRA_DOCKER_ARGUMENTS} \
   --name zoomkr \
   hexagonwin/zoom-kr:latest ${prog} $@ >/dev/null
+
+echo "Enabling verbose X logs for the session."
+
+#'tail -f $HOME/zoomus/.zoom/logs/zoom_stdout_stderr.log'
+#'docker logs --follow zoomkr'
+
+nohup xterm -bg "#33fbff" -T "K-Zoom stdout logs" -e 'tail -f $HOME/zoomus/.zoom/logs/zoom_stdout_stderr.log' &
+nohup xterm -bg "#FFB3F8" -T "K-Zoom docker logs" -e 'docker logs --follow zoomkr' &
