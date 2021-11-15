@@ -19,8 +19,8 @@ RUN apt-get update && \
 		libxcb-shape0 libxcb-xfixes0 libxcb-randr0 libxcb-image0 \
 		libxcb-keysyms1 libxcb-xtest0 ibus ibus-gtk \
 		libxcb-xinerama0 libxkbcommon-x11-0 \
-		libnss3 libxss1 xcompmgr pulseaudio && \
-		fonts-nanum* wget unzip \
+		libnss3 libxss1 xcompmgr pulseaudio \
+		fonts-nanum* wget unzip && \
 
 	 apt-get clean -y && \
 	 apt-get autoremove -y && \
