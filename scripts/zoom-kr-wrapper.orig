@@ -110,14 +110,16 @@ elif [[ -n ${exec} ]]; then
   exec ${exec} $@
 fi
 
+<<<<<<< HEAD
 figlet "K-ZOOM"
 echo " [ Korean Zoom for Docker ] "
 echo -e " [ PRODUCT REGISTERED TO USER : "$USER"] "
+=======
+>>>>>>> 146145fd7956f442be795ca72d1f5c0dc02afdb4
 cleanup_stopped_zoom_kr_instances
 prepare_docker_env_parameters
 prepare_docker_volume_parameters
 prepare_docker_device_parameters
-
 echo "Starting ${prog}..."
 ${SUDO} docker run -d \
   ${ENV_VARS} \

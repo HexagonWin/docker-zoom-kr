@@ -10,6 +10,8 @@ This project is fully inspired of [sameersbn](https://github.com/sameersbn) [Sky
    [ KOREAN ZOOM FOR DOCKER ]    
 ```
 
+![K-ZOOM on Debian GNU/Linux with CDE on systemd](https://github.com/HexagonWin/docker-zoom-kr/blob/master/screenshot.png)
+
 # 서론
 GNU/리눅스 환경에서 Zoom을 Docker 내에서 실행하기 위한 Dockerfile입니다.
 
