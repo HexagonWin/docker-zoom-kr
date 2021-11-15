@@ -110,7 +110,7 @@ elif [[ -n ${exec} ]]; then
   exec ${exec} $@
 fi
 
-cleanup_stopped_zoom_us_instances
+cleanup_stopped_zoom_kr_instances
 prepare_docker_env_parameters
 prepare_docker_volume_parameters
 prepare_docker_device_parameters
